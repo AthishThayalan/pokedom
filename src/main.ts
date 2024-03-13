@@ -5,8 +5,9 @@ import pokemonArray from "./data/pokemon";
 
 const container = document.querySelector<HTMLDivElement>(".card-container");
 const input = document.querySelector<HTMLInputElement>("input");
+const select = document.querySelector<HTMLSelectElement>("select");
 
-if (!container || !input) {
+if (!container || !input || !select) {
   throw new Error("Element not found.");
 }
 
