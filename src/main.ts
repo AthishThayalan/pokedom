@@ -21,7 +21,14 @@ const populateDropdown = (): void => {
       }
     });
   });
+  // LOGS 17 different types.
   console.log(typesArr);
+  typesArr.forEach((type) => {
+    const option = document.createElement("option");
+    option.value = type;
+    option.innerText = type;
+    select.appendChild(option);
+  });
 };
 
 const generateCards = (pokemon: Pokemon): void => {
@@ -75,5 +82,13 @@ const displayFilteredCards = (): void => {
   });
 };
 
-document.addEventListener("DOMContentLoaded", displayAllCards);
+const selectChange = ():void=>{
+    if(select.value === "any")
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  displayAllCards();
+  populateDropdown();
+});
 input.addEventListener("input", displayFilteredCards);
+select.addEventListener("change",selectChange);
