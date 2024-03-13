@@ -72,9 +72,15 @@ const displayAllCards = (): void => {
 };
 
 const displayFilteredCards = (): void => {
-  const filteredPokemon = pokemonArray.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(input.value.toLowerCase())
-  );
+  const filteredPokemon = pokemonArray.filter((pokemon) => {
+    const nameCheck = pokemon.name
+      .toLowerCase()
+      .includes(input.value.toLowerCase());
+    const typeCheck =
+      select.value.toLowerCase() === "any" ||
+      pokemon.types.includes(select.value);
+    return nameCheck && typeCheck;
+  });
   container.innerHTML = "";
   filteredPokemon.forEach((pokemon) => {
     generateCards(pokemon);
