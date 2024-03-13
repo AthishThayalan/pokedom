@@ -4,16 +4,21 @@ import "./data/types";
 import pokemonArray from "./data/pokemon";
 
 const container = document.querySelector<HTMLDivElement>(".card-container");
-console.log("HELLo");
 
 if (!container) {
   throw new Error("Element not found.");
 }
 
 const generatePokemonCards = (): void => {
-  // card container --> card , card img --> card,content --> card text , card heading
-  console.log("LOADED");
   pokemonArray.forEach((pokemon) => {
+    const pokemonTypes = pokemon.types;
+    const pokemonTypesText: string =
+      pokemonTypes.length === 1
+        ? `${pokemonTypes[0]}`
+        : `${pokemonTypes[0]} & ${pokemonTypes[1]}`;
+    const pokemonName =
+      pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+
     const card = document.createElement("div");
     card.classList.add("card");
 
@@ -22,23 +27,18 @@ const generatePokemonCards = (): void => {
     image.alt = pokemon.name;
     card.appendChild(image);
 
-    const content = document.createElement("div"); // this needs card__heading and card__text
+    const content = document.createElement("div");
     content.classList.add("card__content");
 
     const heading = document.createElement("h2");
     heading.classList.add("card__heading");
-    heading.innerText = pokemon.name;
+    heading.innerText = pokemonName;
     content.appendChild(heading);
 
     const text = document.createElement("p");
     text.classList.add("card__text");
-    let pokemonTypes = pokemon.types;
-    let pokemonTypesText: string =
-      pokemonTypes.length === 1
-        ? `${pokemonTypes[0]}`
-        : `${pokemonTypes[0]} & ${pokemonTypes[1]}`;
-    console.log(pokemonTypes);
-    text.innerText = `${pokemon.name}(#${pokemon.id}) is a ${pokemonTypesText} type pokemon.`;
+
+    text.innerText = `${pokemonName} (#${pokemon.id}) is a ${pokemonTypesText} type pokemon.`;
     content.appendChild(text);
 
     card.appendChild(content);
