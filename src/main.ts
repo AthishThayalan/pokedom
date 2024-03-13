@@ -14,14 +14,12 @@ if (!container || !input || !select) {
 const populateDropdown = (): void => {
   const typesArr: string[] = [];
   pokemonArray.forEach((pokemon) => {
-    // FOR EACH POKEMON we want to loop through EACH TYPE. => nested for loop
     pokemon.types.forEach((type) => {
       if (!typesArr.includes(type)) {
         typesArr.push(type);
       }
     });
   });
-  // LOGS 17 different types.
   console.log(typesArr);
   typesArr.forEach((type) => {
     const option = document.createElement("option");
@@ -67,6 +65,7 @@ const generateCards = (pokemon: Pokemon): void => {
   container.appendChild(card);
 };
 const displayAllCards = (): void => {
+  container.innerHTML = "";
   pokemonArray.forEach((pokemon) => {
     generateCards(pokemon);
   });
@@ -83,7 +82,7 @@ const displayFilteredCards = (): void => {
 };
 
 const selectChange = (): void => {
-  if (select.value === "any") {
+  if (select.value.toLowerCase() === "any") {
     displayAllCards();
   } else {
     const filteredPokemon = pokemonArray.filter((pokemon) => {
