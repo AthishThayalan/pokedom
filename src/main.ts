@@ -21,6 +21,9 @@ const generatePokemonCards = (): void => {
     image.src = pokemon.sprite;
     image.alt = pokemon.name;
     card.appendChild(image);
+
+    const content = document.createElement("div"); // this needs card__heading and card__text
+    content.classList.add("card__content");
   });
 };
 
