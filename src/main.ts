@@ -30,7 +30,14 @@ const generatePokemonCards = (): void => {
     heading.innerText = pokemon.name;
     content.appendChild(heading);
 
+    const text = document.createElement("p");
+    text.classList.add("card__text");
+    text.innerText = `${pokemon.name}(#${pokemon.id}) is a grass & poison type pokemon.`;
+    content.appendChild(text);
+
     card.appendChild(content);
+
+    container.appendChild(card);
   });
 };
 
