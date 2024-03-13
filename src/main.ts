@@ -24,6 +24,13 @@ const generatePokemonCards = (): void => {
 
     const content = document.createElement("div"); // this needs card__heading and card__text
     content.classList.add("card__content");
+
+    const heading = document.createElement("h2");
+    heading.classList.add("card__heading");
+    heading.innerText = pokemon.name;
+    content.appendChild(heading);
+
+    card.appendChild(content);
   });
 };
 
