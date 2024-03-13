@@ -32,7 +32,13 @@ const generatePokemonCards = (): void => {
 
     const text = document.createElement("p");
     text.classList.add("card__text");
-    text.innerText = `${pokemon.name}(#${pokemon.id}) is a grass & poison type pokemon.`;
+    let pokemonTypes = pokemon.types;
+    let pokemonTypesText: string =
+      pokemonTypes.length === 1
+        ? `${pokemonTypes[0]}`
+        : `${pokemonTypes[0]} & ${pokemonTypes[1]}`;
+    console.log(pokemonTypes);
+    text.innerText = `${pokemon.name}(#${pokemon.id}) is a ${pokemonTypesText} type pokemon.`;
     content.appendChild(text);
 
     card.appendChild(content);
