@@ -52,6 +52,7 @@ const handleInputChange = (): void => {
   const filteredPokemon = pokemonArray.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(input.value.toLowerCase())
   );
+  container.innerHTML = "";
   filteredPokemon.forEach((pokemon) => {
     const pokemonTypes = pokemon.types;
     const pokemonTypesText: string =
