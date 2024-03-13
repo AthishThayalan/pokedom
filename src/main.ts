@@ -82,13 +82,23 @@ const displayFilteredCards = (): void => {
   });
 };
 
-const selectChange = ():void=>{
-    if(select.value === "any")
-}
+const selectChange = (): void => {
+  if (select.value === "any") {
+    displayAllCards();
+  } else {
+    const filteredPokemon = pokemonArray.filter((pokemon) => {
+      return pokemon.types.includes(select.value);
+    });
+    container.innerHTML = "";
+    filteredPokemon.forEach((pokemon) => {
+      generateCards(pokemon);
+    });
+  }
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   displayAllCards();
   populateDropdown();
 });
 input.addEventListener("input", displayFilteredCards);
-select.addEventListener("change",selectChange);
+select.addEventListener("change", selectChange);
