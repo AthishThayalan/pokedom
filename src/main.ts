@@ -11,6 +11,19 @@ if (!container || !input || !select) {
   throw new Error("Element not found.");
 }
 
+const populateDropdown = (): void => {
+  const typesArr: string[] = [];
+  pokemonArray.forEach((pokemon) => {
+    // FOR EACH POKEMON we want to loop through EACH TYPE. => nested for loop
+    pokemon.types.forEach((type) => {
+      if (!typesArr.includes(type)) {
+        typesArr.push(type);
+      }
+    });
+  });
+  console.log(typesArr);
+};
+
 const generateCards = (pokemon: Pokemon): void => {
   const pokemonTypes = pokemon.types;
   const pokemonTypesText: string =
